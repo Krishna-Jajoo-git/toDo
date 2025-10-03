@@ -1,0 +1,31 @@
+<?php require 'views/header.html'; ?>
+
+<h3>Create Todo</h3>
+
+<?php if (isset($successMessage)) { ?>
+<article style="background-color: palegreen; border-left: 4px solid green">
+    <p style="color: darkgreen; margin: 0"><?=$successMessage;?></p>    
+</article>
+<?php } ?>
+
+<?php if (isset($errorMessage)) { ?>
+<article style="background-color: pink; border-left: 4px solid red">
+    <p style="color: darkred; margin: 0"><?=$errorMessage;?></p>
+</article>
+<?php } ?>
+
+<form method="POST" action="create.php">
+    <fieldset>
+        <label>
+            Description
+            <input name="description" type="text" value="">
+        </label>
+        <label>
+            Due Date
+            <input name="due_date" type="date" value="">
+        </label>
+        <button type="submit">Create Todo</button>
+    </fieldset>
+</form>
+
+<?php require 'views/footer.html'; ?>
