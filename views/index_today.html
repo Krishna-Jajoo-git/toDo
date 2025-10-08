@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Todo List (Highlight Today)</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <ul>
+        <?php if (!empty($todos)): ?>
+            <?php $today = date("Y-m-d"); ?>
+            <?php foreach ($todos as $todo): ?>
+                <li <?php if ($todo->dueDate === $today): ?> style="background-color: yellow;" <?php endif; ?>>
+                    <?= $todo->description ?>
+                    (Due: <?= $todo->dueDate ?>)
+                    <?= $todo->isCompleted ? "[Completed]" : "" ?>
+
+                    <a href="edit_delete.php?edit=<?= $todo->id ?>">Edit</a> | 
+                    <a href="edit_delete.php?delete=<?= $todo->id ?>">Delete</a>
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li>No tasks found.</li>
+        <?php endif; ?>
+    </ul>
+
+    <p><a href="create.php">Add New Task</a></p>
+    <p><a href="index.php">Back to Normal View</a></p>
+</body>
+</html>
